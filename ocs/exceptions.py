@@ -12,3 +12,7 @@ class CephHealthException(Exception):
 
 class UnknownTestStatusException(Exception):
     pass
+
+
+class PullSecretFileNotFound(Exception):
+    pass
