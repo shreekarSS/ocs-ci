@@ -183,12 +183,13 @@ def create_ebs_volumes(
             log.info(
                 f"Creating and attaching {size} GB volume to {worker['name']}"
             )
-            p.spawn(aws.create_volume_and_attach,
+            p.spawn(
+                    aws.create_volume_and_attach,
                     availability_zone=worker['avz'],
                     instance_id=worker['id'],
                     name=f"{worker['name']}_extra_volume",
                     size=size,
-                    )
+            )
 
 
 @retry((CephHealthException, CommandFailed), tries=20, delay=30, backoff=1)
